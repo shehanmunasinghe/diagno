@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <title>Diagno | Human Lives Matter</title>
+
+    <!--jQuery-->
+    <script src="js/jquery-3.5.1.min.js"></script>
+
+    <!--EpochJS-->
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/epoch.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/epoch.min.css">
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<!--Body-->
+
+<body>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto">
+                <!--                                             onclick="renderHome()-->
+                <a class="navbar-brand" href="#">
+                    Diagno</a>
+            </ul>
+
+
+            <ul class="navbar-nav mr-auto">
+                <button onclick="analyze();" type="button" class="btn-sm btn-success screen_PlottingArea"
+                    style="display:None">Analyse</button>
+            </ul>
+
+            <ul class="navbar-nav">
+                <button onclick="openFullscreen();" style=" " class="btn btn-dark">
+                    <span class="material-icons">fullscreen</span>
+                </button>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="container-fluid text-white">
+
+        <div id="welcomeScreen" class="screen_WelcomeScreen">
+            <div class="jumbotron bg-dark" style="margin-top:5px">
+
+                <h1 class="display-3">
+                    <center>Diagno</center>
+                </h1>
+                <h4 class="">
+                    <center>Deep Learning Based Classification of 12-lead ECG Signals</center>
+                </h4>
+                <hr class="my-4" style="height: 1px; border-color:white; background-color:white">
+
+
+
+                <p class="">Upload Recording</p>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="inputfile" id="inputfile"
+                            aria-describedby="inputGroupFileAddon04">
+                        <label class="custom-file-label" for="inputfile">Choose file</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div style="padding:30px; display:None" id="plottingArea" class="screen_PlottingArea">
+            <div class="row">
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>I</center>
+                    </p>
+                    <div id="lineChart_0" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>II</center>
+                    </p>
+                    <div id="lineChart_1" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>III</center>
+                    </p>
+                    <div id="lineChart_2" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>aVR</center>
+                    </p>
+                    <div id="lineChart_3" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>aVL</center>
+                    </p>
+                    <div id="lineChart_4" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>aVF</center>
+                    </p>
+                    <div id="lineChart_5" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>V1</center>
+                    </p>
+                    <div id="lineChart_6" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>V2</center>
+                    </p>
+                    <div id="lineChart_7" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>V3</center>
+                    </p>
+                    <div id="lineChart_8" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>V4</center>
+                    </p>
+                    <div id="lineChart_9" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>V5</center>
+                    </p>
+                    <div id="lineChart_10" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+                <div class="col-*-*">
+                    <p class="card-title">
+                        <center>V6</center>
+                    </p>
+                    <div id="lineChart_11" class="epoch" style="width: 300px; height: 150px; margin:10px"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="resultDisplay" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Response</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm">
+                        <!-- <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead> -->
+                        <tbody>
+                            <tr>
+                                <td>Left Axis Deviation</td>
+                                <td id="LAD"></td>
+                            </tr>
+                            <tr>
+                                <td>T Wave Abnormal</td>
+                                <td id="TAb"></td>
+                            </tr>
+                            <tr>
+                                <td>Atrial Fibrillation</td>
+                                <td id="AF"></td>
+                            </tr>
+                            <tr>
+                                <td>Sinus Tachycardia</td>
+                                <td id="STach"></td>
+                            </tr>
+                            <tr>
+                                <td>1st Degree Av Block</td>
+                                <td id="IAVB"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p id="dataHere"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<!--	JS-->
+<script type="text/javascript">
+    let public_ip = "192.168.1.1"
+    let _arr = []
+    let formData;
+
+    function formatArrayVals(arr) {
+        var i;
+        var vals = [];
+        for (i = 0; i < Math.floor(arr.length / 4); i++) {
+            vals.push({
+                x: i,
+                y: arr[i]
+            })
+        }
+        return vals;
+    }
+
+
+    document.getElementById('inputfile')
+        .addEventListener('change', function () {
+
+            var fr = new FileReader();
+            fr.onload = function () {
+
+                var j_arr = JSON.parse(fr.result);
+                _arr = j_arr;
+                // console.log(j_arr);
+                formData = fr;
+                // console.log(formData);
+                // console.log(j_arr);
+                // localStorage.setItem('arr', j_arr);
+
+                var myChart_1 = $('#lineChart_0').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[0]),
+                    }],
+                    axes: ['bottom']
+                });
+
+                var myChart_1 = $('#lineChart_1').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[1]),
+                    }],
+                    axes: ['bottom']
+                });
+
+                var myChart_2 = $('#lineChart_2').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[2])
+                    }],
+                    axes: ['bottom']
+                });
+
+                var myChart_3 = $('#lineChart_3').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[3])
+                    }],
+                    axes: ['bottom']
+                });
+
+                var myChart_1 = $('#lineChart_4').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[4]),
+                    }],
+                    axes: ['bottom']
+                });
+
+                var myChart_1 = $('#lineChart_5').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[5]),
+                    }],
+                    axes: ['bottom']
+                });
+
+                var myChart_2 = $('#lineChart_6').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[6])
+                    }],
+                    axes: ['bottom']
+                });
+
+                var myChart_3 = $('#lineChart_7').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[7])
+                    }],
+                    axes: ['bottom']
+                });
+
+
+                var myChart_1 = $('#lineChart_8').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[8]),
+                    }],
+                    axes: ['bottom']
+                });
+
+                var myChart_1 = $('#lineChart_9').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[9]),
+                    }],
+                    axes: ['bottom']
+                });
+
+                var myChart_2 = $('#lineChart_10').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[10])
+                    }],
+                    axes: ['bottom']
+                });
+
+                var myChart_3 = $('#lineChart_11').epoch({
+                    type: 'line',
+                    data: [{
+                        values: formatArrayVals(j_arr[11])
+                    }],
+                    axes: ['bottom']
+                });
+                $(".screen_PlottingArea").show();
+
+                $(".screen_WelcomeScreen").hide();
+            }
+
+            fr.readAsText(this.files[0]);
+        })
+
+
+    $(document).ready(function () {
+        renderHome();
+    });
+
+    function analyze() {
+        $('#resultDisplay').modal('show')
+        console.log(JSON.stringify(_arr));
+        console.log(`${public_ip}:8080/predictions`);
+        // fetch('https://jsonplaceholder.typicode.com/todos/1')
+        //     .then(response => response.json())
+        //     .then((data) => {
+        //         console.log(data)
+        //         $('#dataHere').text(data.title);
+        //     });
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("inputFile", JSON.stringify(_arr));
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+        };
+
+        fetch("http://18.222.224.2:8080/predictions/torch_model", requestOptions)
+            .then(response => response.json())
+            .then((result) => {
+                console.log(result);
+                // $('#dataHere').text(result[0]);
+                $('#LAD').text(`${(result[0]*100).toFixed(2)}%`);
+                $('#TAb').text(`${(result[1]*100).toFixed(2)}%`);
+                $('#AF').text(`${(result[2]*100).toFixed(2)}%`);
+                $('#STach').text(`${(result[3]*100).toFixed(2)}%`);
+                $('#IAVB').text(`${(result[4]*100).toFixed(2)}%`);
+
+                if(result[0]>0.5){
+                    $('#LAD').addClass("table-danger")
+                }else{
+                    $('#LAD').addClass("table-success")
+                }
+
+                if(result[1]>0.5){
+                    $('#TAb').addClass("table-danger")
+                }else{
+                    $('#TAb').addClass("table-success")
+                }
+
+                if(result[2]>0.5){
+                    $('#AF').addClass("table-danger")
+                }else{
+                    $('#AF').addClass("table-success")
+                }
+
+                if(result[3]>0.5){
+                    $('#STach').addClass("table-danger")
+                }else{
+                    $('#STach').addClass("table-success")
+                }
+
+                if(result[4]>0.5){
+                    $('#IAVB').addClass("table-danger")
+                }else{
+                    $('#IAVB').addClass("table-success")
+                }
+            })
+            .catch(error => console.log('error', error));
+
+
+    }
+
+</script>
+
+<!--Render Pages-->
+<script>
+    function renderHome() {
+        $(".screen_PlottingArea").hide();
+        $(".screen_WelcomeScreen").show();
+    }
+
+    function renderRealTimePlotPage() {
+        $(".screen_PlottingArea").show();
+        $(".screen_WelcomeScreen").hide();
+    }
+
+</script>
+
+
+
+
+<!--WebSocket-->
+<script>
+
+    $("#wsConnectBtn").click(function () {
+        //  alert("The paragraph was clicked.");
+        //    alert($("#wsAddress").val())
+        renderRealTimePlotPage();
+
+        ws = new WebSocket("ws://127.0.0.1:5678/")
+        ws.onopen = function (msg) {
+            // Logic for opened connection
+            console.log('Connected');
+        };
+        ws.onmessage = function (msg) {
+            // Handle received data
+            vals = JSON.parse(msg.data)
+            console.log(vals);
+        };
+
+        ws.onclose = function (msg) {
+            // Logic for closed connection
+            console.log('Disconnected');
+        }
+        ws.error = function (err) {
+            console.log(err); // Write errors to console
+        }
+    });
+
+</script>
+
+
+
+
+
+
+<!--Fullscreen-->
+<script>
+    /* Get the documentElement (<html>) to display the page in fullscreen */
+    var elem = document.documentElement;
+
+    /* View in fullscreen */
+    function openFullscreen() {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+            elem.msRequestFullscreen();
+        }
+    }
+
+    /* Close fullscreen */
+    function closeFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+            document.msExitFullscreen();
+        }
+    }
+</script>
+
+
+
+
+
+
+
+<!--Style    -->
+<style>
+    body {
+        background-color: black;
+    }
+
+    #lineChart_0 .line {
+        /*         stroke: cyan             */
+    }
+
+    #lineChart_1 .line {
+        stroke: green
+    }
+
+    #lineChart_2 .line {
+        stroke: crimson
+    }
+
+    #lineChart_3 .line {
+        stroke: DarkOrchid
+    }
+
+
+    #lineChart_4 .line {
+        stroke: blue
+    }
+
+    #lineChart_5 .line {
+        stroke: DarkOrange
+    }
+
+    #lineChart_6 .line {
+        stroke: ForestGreen
+    }
+
+    #lineChart_7 .line {
+        stroke: Chocolate
+    }
+
+
+    #lineChart_8 .line {
+        stroke: DarkKhaki
+    }
+
+    #lineChart_9 .line {
+        stroke: DarkSalmon
+    }
+
+    #lineChart_10 .line {
+        stroke: DarkViolet
+    }
+
+    #lineChart_11 .line {
+        stroke: Fuchsia
+    }
+</style>
+
+</html>
