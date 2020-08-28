@@ -1,7 +1,7 @@
 # Testing the Diagno Web App
 
 1. Visit [http://diagno-ui.herokuapp.com/]
-2. Download the sample recordings from here [//]. (If you have your own ECG recording device you too can generate JSON Files yourselves. See [JSON File Format](#json-file-format) )
+2. Download the sample recordings from [here]("https://github.com/shehanmunasinghe/diagno/blob/master/Sample%20Recordings"). (If you have your own ECG recording device you too can generate JSON Files yourselves. See [JSON File Format](#json-file-format) )
 3. Click 'Choose File'/'Browse' and upload any of the sample recordings. 
 4. You'll see 12 plots for the visualization of 12-lead ECG signals. 
 5. Now click 'Analyse'. You'll get the machine-generated predictions !!
@@ -26,7 +26,7 @@
         [0.09979861811156633, 0.099748679613499, 0.09982761038949958, ..., 0.09951139681462995, 0.09730531724294086]
         [0.09711884099772175, 0.09732782051344732, 0.09711130487391956,..., 0.0973777123000035, 0.09690846013666106]
     ]'
-    
+
 #### Python Functions to Resample and Normalise
     import numpy as np
     from scipy import signal
