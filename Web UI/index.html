@@ -2,7 +2,7 @@
 <html>
 
 <head lang="en">
-    <title>Diagno | Human Lives Matter</title>
+    <title>Diagno ❤️ | Human Lives Matter</title>
 
     <!--jQuery-->
     <script src="js/jquery-3.5.1.min.js"></script>
@@ -28,7 +28,7 @@
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
 </head>
 
 <!--Body-->
@@ -71,16 +71,36 @@
             <div class="jumbotron bg-dark" style="margin-top:5px">
 
                 <h1 class="display-3">
-                    <center>Diagno</center>
+                    <center>Diagno ❤️</center>
                 </h1>
                 <h4 class="">
-                    <center>Deep Learning Based Classification of 12-lead ECG Signals</center>
+                    <center>AI Based Remote Cardiology Solution</center>
                 </h4>
                 <hr class="my-4" style="height: 1px; border-color:white; background-color:white">
+                
+                <p>
+                    <center>
+                    Diagno utilizes the power of deep learning to detect 5 different cardiac conditions with over 90% accuracy using just a 10-second recording of 12-Lead ECG.
+                    </center>    
+                    
+                    
+                </p>
+                <center>
+                <iframe title="vimeo-player" src="https://player.vimeo.com/video/451631301" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                </center>
+                
+                
+                <hr class="my-4" style="height: 1px; border-color:white; background-color:white">
+                
+                
 
-
-
-                <p class="">Upload Recording</p>
+                <p class="">
+                    Upload Recording  
+                    [<a href="#" >Help/ Testing Instructions </a>]
+                    [<a href="#" >Download Sample Recordings </a>]
+                       
+                    
+                </p>
                 <div class="input-group">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="inputfile" id="inputfile"
@@ -88,6 +108,14 @@
                         <label class="custom-file-label" for="inputfile">Choose file</label>
                     </div>
                 </div>
+                
+                <hr class="my-4" style="height: 1px; border-color:white; background-color:white">
+                 
+                <div class="d-flex justify-content-around">
+                <a class="btn btn-primary btn" href="https://github.com/shehanmunasinghe/diagno" role="button">View on GitHub</a>
+                <a class="btn btn-success btn" href="https://devpost.com/software/diagno" role="button">View on Devpost</a>
+                </div>
+
 
             </div>
         </div>
@@ -195,23 +223,23 @@
                             </tr>
                         </thead> -->
                         <tbody>
-                            <tr>
+                            <tr id="LADr">
                                 <td>Left Axis Deviation</td>
                                 <td id="LAD"></td>
                             </tr>
-                            <tr>
+                            <tr id="TAbr">
                                 <td>T Wave Abnormal</td>
                                 <td id="TAb"></td>
                             </tr>
-                            <tr>
+                            <tr id="AFr">
                                 <td>Atrial Fibrillation</td>
                                 <td id="AF"></td>
                             </tr>
-                            <tr>
+                            <tr id="STachr">
                                 <td>Sinus Tachycardia</td>
                                 <td id="STach"></td>
                             </tr>
-                            <tr>
+                            <tr id="IAVBr">
                                 <td>1st Degree Av Block</td>
                                 <td id="IAVB"></td>
                             </tr>
@@ -382,7 +410,9 @@
         //     });
 
         var myHeaders = new Headers();
+        
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+        myHeaders.append("Access-Control-Allow-Credentials", "true");
 
         var urlencoded = new URLSearchParams();
         urlencoded.append("inputFile", JSON.stringify(_arr));
@@ -394,7 +424,7 @@
             redirect: 'follow'
         };
 
-        fetch("http://18.222.224.2:8080/predictions/torch_model", requestOptions)
+        fetch("https://18.222.224.2:8443/predictions/torch_model", requestOptions)
             .then(response => response.json())
             .then((result) => {
                 console.log(result);
@@ -406,33 +436,33 @@
                 $('#IAVB').text(`${(result[4]*100).toFixed(2)}%`);
 
                 if(result[0]>0.5){
-                    $('#LAD').addClass("table-danger")
+                    $('#LADr').addClass("table-danger")
                 }else{
-                    $('#LAD').addClass("table-success")
+                    $('#LADr').addClass("table-success")
                 }
 
                 if(result[1]>0.5){
-                    $('#TAb').addClass("table-danger")
+                    $('#TAbr').addClass("table-danger")
                 }else{
-                    $('#TAb').addClass("table-success")
+                    $('#TAbr').addClass("table-success")
                 }
 
                 if(result[2]>0.5){
-                    $('#AF').addClass("table-danger")
+                    $('#AFr').addClass("table-danger")
                 }else{
-                    $('#AF').addClass("table-success")
+                    $('#AFr').addClass("table-success")
                 }
 
                 if(result[3]>0.5){
-                    $('#STach').addClass("table-danger")
+                    $('#STachr').addClass("table-danger")
                 }else{
-                    $('#STach').addClass("table-success")
+                    $('#STachr').addClass("table-success")
                 }
 
                 if(result[4]>0.5){
-                    $('#IAVB').addClass("table-danger")
+                    $('#IAVBr').addClass("table-danger")
                 }else{
-                    $('#IAVB').addClass("table-success")
+                    $('#IAVBr').addClass("table-success")
                 }
             })
             .catch(error => console.log('error', error));
