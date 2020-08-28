@@ -1,7 +1,7 @@
 # Testing the Diagno Web App
 
 1. Visit [http://diagno-ui.herokuapp.com/]
-2. Download the sample recordings from [here]("https://github.com/shehanmunasinghe/diagno/blob/master/Sample%20Recordings"). (If you have your own ECG recording device you too can generate JSON Files yourselves. See [JSON File Format](#json-file-format) )
+2. Download the sample recordings from [here](https://github.com/shehanmunasinghe/diagno/blob/master/Sample%20Recordings). (If you have your own ECG recording device you too can generate JSON Files yourselves. See [JSON File Format](#json-file-format) )
 3. Click 'Choose File'/'Browse' and upload any of the sample recordings. 
 4. You'll see 12 plots for the visualization of 12-lead ECG signals. 
 5. Now click 'Analyse'. You'll get the machine-generated predictions !!
