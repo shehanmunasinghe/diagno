@@ -14,18 +14,20 @@ Cardiovascular diseases account for 17.9 million lives annually becoming the mos
 
 12-lead Electrocardiograms are among the major tools used by cardiologists for diagnosis of different heart conditions. The capturing of these signals usually happen through an ECG device. Ever since the first ECG device was invented, the process has been unchanged for decades, and accurate diagnosis heavily depends on well-trained cardiologists.
 
-With  the advent of deep neural networks, frameworks like PyTorch and large open-source datasets, there’s green-light that this process can be automated making healthcare solutions more affordable and accessible to everyone on earth
+With the advent of deep neural networks, frameworks like PyTorch and large open-source datasets, there’s green-light that this process can be automated making healthcare solutions more affordable and accessible to everyone on earth
 
 ## What it does
 
-Diagno is an AI-based remote cardiology solution developed using PyTorch. Its deep learning model is able to identify 5 different cardiac conditions from 12-lead ECG signals with over 90% accuracy.
+![Web app screenshot 2](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/Screenshot2.PNG?raw=true)
+
+At Daigno we have developed a deep learning algorithm that is able to identify 5 different cardiac conditions from 12-lead ECG signals with over 90% accuracy. Diagno's web app [http://diagno-ui.herokuapp.com/] allows anyone to upload a 12-lead ECG recording as a JSON file and get the machine-generated prediction within a couple of seconds.
 
 ## How we built it
-![The Problem We Are Solving](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/3.png?raw=true)
+![CNN model](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/3.png?raw=true)
 
 The neural network model used is a 1D-CNN, largely inspired by ResNet.The model takes input as 12 1-dimensional signals corresponding to 12 ECG leads, sampled at 400Hz, and of 12 samples length. At the final layer, the model outputs probabilities for each cardiac condition.
 
-![The Problem We Are Solving](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/4.png?raw=true)
+![Workflow](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/4.png?raw=true)
 
 The deep neural network model was trained on a subset of 2020 PhysioNet Computing in Cardiology Challenge Data. The trained model is able to Predict 5 different cardiac conditions with over 90% accuracy.
 
@@ -37,6 +39,6 @@ Model is deployed on AWS using TorchServe
 We got hands on experince on how to use PyTorch from model building to training to deployment.
 
 ## What's next for Diagno
-![The Problem We Are Solving](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/next_steps.jpeg?raw=true)
+![Raspberry Pi Device](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/next_steps.jpeg?raw=true)
 
 As the next step of Daigno, we are planning to build an embedded 12-lead ECG capturing hardware device with a Raspberry Pi and Texas Instruments ADS129X Analog Front End Board
