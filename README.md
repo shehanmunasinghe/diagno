@@ -29,7 +29,7 @@ The neural network model used is a 1D-CNN, largely inspired by ResNet.The model 
 
 ![Workflow](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/4.png?raw=true)
 
-The deep neural network model was trained on a subset of 2020 PhysioNet Computing in Cardiology Challenge Data. The trained model is able to Predict 5 different cardiac conditions with over 90% accuracy.
+The deep neural network model was trained on a subset of 2020 PhysioNet Computing in Cardiology Challenge Data. The trained model is able to predict 5 different cardiac conditions with over 90% accuracy.
 
 Model is deployed on AWS using TorchServe
 
