@@ -117,7 +117,7 @@ Model is deployed on AWS using TorchServe
 ## What we learned
 We got hands-on experience on using PyTorch for
 * Model building 
-* Training to 
+* Training 
 * Deployment
 
 ## What's next for Diagno
