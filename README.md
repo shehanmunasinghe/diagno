@@ -28,7 +28,7 @@ With the advent of deep neural networks, frameworks like PyTorch and large open-
 ## How we built it
 ![CNN model](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/3.png?raw=true)
 
-The neural network model used is a 1D Convolutional Neural, largely inspired by ResNet.The model takes input of 12 1-dimensional signals corresponding to 12 ECG leads, sampled at 400Hz, and of 12 samples length. At the final layer, the model outputs probabilities for each cardiac condition.
+The neural network model used is a 1D Convolutional Neural, largely inspired by ResNet. The model takes input of 12 1-dimensional signals corresponding to 12 ECG leads, sampled at 400Hz, and of 12 samples length. At the final layer, the model outputs probabilities for each cardiac condition.
 
 
     class ECGNet(nn.Module):
