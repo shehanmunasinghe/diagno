@@ -20,7 +20,7 @@ With the advent of deep neural networks, frameworks like PyTorch and large open-
 
 ![Web app screenshot 2](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/Screenshot2.PNG?raw=true)
 
-At Daigno we have developed a deep learning algorithm that is able to identify 5 different cardiac conditions from 12-lead ECG signals with over 90% accuracy. Diagno's web app [http://diagno-ui.herokuapp.com/] allows anyone to upload a 12-lead ECG recording as a JSON file and get the machine-generated prediction within a couple of seconds.
+At Diagno we have developed a deep learning algorithm that is able to identify 5 different cardiac conditions from 12-lead ECG signals with over 90% accuracy. Diagno's web app [http://diagno-ui.herokuapp.com/] allows anyone to upload a 12-lead ECG recording as a JSON file and get the machine-generated prediction within a couple of seconds.
 
 ## How we built it
 ![CNN model](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/3.png?raw=true)
@@ -36,9 +36,9 @@ Model is deployed on AWS using TorchServe
 
 
 ## What we learned
-We got hands on experince on how to use PyTorch from model building to training to deployment.
+We got hands-on experience on how to use PyTorch from model building to training to deployment.
 
 ## What's next for Diagno
 ![Raspberry Pi Device](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/next_steps.jpeg?raw=true)
 
-As the next step of Daigno, we are planning to build an embedded 12-lead ECG capturing hardware device with a Raspberry Pi and Texas Instruments ADS129X Analog Front End Board
+As the next step of Diagno, we are planning to build an embedded 12-lead ECG capturing hardware device with a Raspberry Pi and Texas Instruments ADS129X Analog Front End Board
