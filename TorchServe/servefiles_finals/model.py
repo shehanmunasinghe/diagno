@@ -5,7 +5,7 @@ import torch.optim as optim
 
 class ECGNet(nn.Module):
       
-    def __init__(self, input_channels=12, N_labels=2, kernel_size =17,  n_blocks=4):
+    def __init__(self, input_channels=12, N_labels=5, kernel_size =17,  n_blocks=4):
         super().__init__()
 
         self.padding= (kernel_size-1)//2
