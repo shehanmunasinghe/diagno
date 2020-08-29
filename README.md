@@ -2,7 +2,7 @@
 
 [![video](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F946614890_1280x720.webp&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png)](https://vimeo.com/451631301)
 
-## [Visit Diagno Web App](http://diagno-ui.herokuapp.com/) 
+## [Visit Diagno Web App](https://diagno-ui.herokuapp.com/) 
 ## [Test Instructions](https://github.com/shehanmunasinghe/diagno/blob/master/Test%20Instructions.md)
 
 
@@ -23,7 +23,7 @@ With the advent of deep neural networks, frameworks like PyTorch and large open-
 
 ![Web app screenshot 2](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/Screenshot2.PNG?raw=true)
 
-**At Diagno we have developed a deep learning algorithm that is able to identify 5 different cardiac conditions from 12-lead ECG signals with over 90% accuracy**. Diagno's web app [http://diagno-ui.herokuapp.com/] allows anyone to upload a 12-lead ECG recording as a JSON file and get the machine-generated prediction within a couple of seconds.
+**At Diagno we have developed a deep learning algorithm that is able to identify 5 different cardiac conditions from 12-lead ECG signals with over 90% accuracy**. Diagno's web app [https://diagno-ui.herokuapp.com/] allows anyone to upload a 12-lead ECG recording as a JSON file and get the machine-generated prediction within a couple of seconds.
 
 ## How we built it
 ![CNN model](https://github.com/shehanmunasinghe/diagno/blob/master/Docs/images/3.png?raw=true)
