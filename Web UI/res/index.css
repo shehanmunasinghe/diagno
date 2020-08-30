@@ -1,0 +1,84 @@
+body {
+    background-color: black;
+}
+
+#lineChart_1 .line {
+    stroke: green
+}
+
+#lineChart_2 .line {
+    stroke: crimson
+}
+
+#lineChart_3 .line {
+    stroke: DarkOrchid
+}
+
+
+#lineChart_4 .line {
+    stroke: blue
+}
+
+#lineChart_5 .line {
+    stroke: DarkOrange
+}
+
+#lineChart_6 .line {
+    stroke: ForestGreen
+}
+
+#lineChart_7 .line {
+    stroke: Chocolate
+}
+
+
+#lineChart_8 .line {
+    stroke: DarkKhaki
+}
+
+#lineChart_9 .line {
+    stroke: DarkSalmon
+}
+
+#lineChart_10 .line {
+    stroke: DarkViolet
+}
+
+#lineChart_11 .line {
+    stroke: Fuchsia
+}
+
+.danger-text {
+    color: red;
+}
+
+.success-text {
+    color: green;
+}
+
+.loader {
+    position: relative;
+    text-align: center;
+    margin: 15px auto 35px auto;
+    z-index: 9999;
+    display: block;
+    width: 80px;
+    height: 80px;
+    border: 10px solid rgba(0, 0, 0, .3);
+    border-radius: 50%;
+    border-top-color: #000;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}

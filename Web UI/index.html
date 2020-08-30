@@ -28,7 +28,13 @@
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Custom JS-->
+    <script src="res/index.js"></script> 
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="res/index.css">
 </head>
 
 <!--Body-->
@@ -45,7 +51,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav mr-auto">
-                <!--                                             onclick="renderHome()-->
+                <button onclick="location.reload();" style="display:None" class="btn btn-dark screen_PlottingArea">
+                    <i class="fa fa-home"></i>
+                </button>
                 <a class="navbar-brand" href="#">
                     Diagno</a>
             </ul>
@@ -57,7 +65,7 @@
             </ul>
 
             <ul class="navbar-nav">
-                <button onclick="openFullscreen();" style=" " class="btn btn-dark">
+                <button onclick="openFullscreen();" class="btn btn-dark">
                     <span class="material-icons">fullscreen</span>
                 </button>
             </ul>
@@ -77,29 +85,33 @@
                     <center>AI Based Remote Cardiology Solution</center>
                 </h4>
                 <hr class="my-4" style="height: 1px; border-color:white; background-color:white">
-                
+
                 <p>
                     <center>
-                    Diagno utilizes the power of deep learning to detect 5 different cardiac conditions with over 90% accuracy using just a 10-second recording of 12-Lead ECG.
-                    </center>    
-                    
-                    
+                        Diagno utilizes the power of deep learning to detect 5 different cardiac conditions with over
+                        90% accuracy using just a 10-second recording of 12-Lead ECG.
+                    </center>
+
+
                 </p>
                 <center>
-                <iframe title="vimeo-player" src="https://player.vimeo.com/video/451631301" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                    <iframe title="vimeo-player" src="https://player.vimeo.com/video/451631301" width="640" height="360"
+                        frameborder="0" allowfullscreen></iframe>
                 </center>
-                
-                
+
+
                 <hr class="my-4" style="height: 1px; border-color:white; background-color:white">
-                
-                
+
+
 
                 <p class="">
-                    Upload Recording  
-                    [<a href="#" >Help/ Testing Instructions </a>]
-                    [<a href="#" >Download Sample Recordings </a>]
-                       
-                    
+                    Upload Recording
+                    [<a href="https://github.com/shehanmunasinghe/diagno/blob/master/Test%20Instructions.md">Help/
+                        Testing Instructions </a>]
+                    [<a href="https://github.com/shehanmunasinghe/diagno/blob/master/Sample%20Recordings">Download
+                        Sample Recordings </a>]
+
+
                 </p>
                 <div class="input-group">
                     <div class="custom-file">
@@ -108,12 +120,14 @@
                         <label class="custom-file-label" for="inputfile">Choose file</label>
                     </div>
                 </div>
-                
+
                 <hr class="my-4" style="height: 1px; border-color:white; background-color:white">
-                 
+
                 <div class="d-flex justify-content-around">
-                <a class="btn btn-primary btn" href="https://github.com/shehanmunasinghe/diagno" role="button">View on GitHub</a>
-                <a class="btn btn-success btn" href="https://devpost.com/software/diagno" role="button">View on Devpost</a>
+                    <a class="btn btn-primary btn" href="https://github.com/shehanmunasinghe/diagno" role="button">View
+                        on GitHub</a>
+                    <a class="btn btn-success btn" href="https://devpost.com/software/diagno" role="button">View on
+                        Devpost</a>
                 </div>
 
 
@@ -213,35 +227,45 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-sm">
-                        <!-- <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                            </tr>
-                        </thead> -->
+                    <div class="before-results">
+                        <div class="loader">
+
+                        </div>
+                    </div>
+                    <div class="error" style="display:None">
+                        <p>Error Occured</p>
+                    </div>
+                    <table class="table table-sm after-results" style="display:None">
                         <tbody>
                             <tr id="LADr">
-                                <td>Left Axis Deviation</td>
+                                <td><a href="https://en.wikipedia.org/wiki/Left_axis_deviation#:~:text=In%20electrocardiography%2C%20left%20axis%20deviation,in%20leads%20aVF%20and%20II."
+                                        target="_blank">Left Axis Deviation</a></td>
                                 <td id="LAD"></td>
+                                <td id="LADp"></td>
                             </tr>
                             <tr id="TAbr">
-                                <td>T Wave Abnormal</td>
+                                <td><a href="https://en.wikipedia.org/wiki/T_wave#Abnormalities" target="_blank">T Wave
+                                        Abnormal</a></td>
                                 <td id="TAb"></td>
+                                <td id="TAbp"></td>
                             </tr>
                             <tr id="AFr">
-                                <td>Atrial Fibrillation</td>
+                                <td><a href="https://www.mayoclinic.org/diseases-conditions/atrial-fibrillation/symptoms-causes/syc-20350624#:~:text=faster%20than%20normal.-,Atrial%20fibrillation%20is%20an%20irregular%20and%20often%20rapid%20heart%20rate,to%20175%20beats%20a%20minute."
+                                        target="_blank">Atrial Fibrillation</a></td>
                                 <td id="AF"></td>
+                                <td id="AFp"></td>
                             </tr>
                             <tr id="STachr">
-                                <td>Sinus Tachycardia</td>
+                                <td><a href="https://en.wikipedia.org/wiki/Sinus_tachycardia#:~:text=Sinus%20tachycardia%20(also%20colloquially%20known,beats%2Fmin%20(bpm)."
+                                        target="_blank">Sinus Tachycardia</a></td>
                                 <td id="STach"></td>
+                                <td id="STachp"></td>
                             </tr>
                             <tr id="IAVBr">
-                                <td>1st Degree Av Block</td>
+                                <td><a href="https://www.ncbi.nlm.nih.gov/books/NBK448164/#:~:text=First%2Ddegree%20atrioventricular%20(AV),asymptomatic%20and%20without%20significant%20complications."
+                                        target="_blank">1st Degree Av Block</a></td>
                                 <td id="IAVB"></td>
+                                <td id="IAVBp"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -258,7 +282,6 @@
 
 <!--	JS-->
 <script type="text/javascript">
-    let public_ip = "192.168.1.1"
     let _arr = []
     let formData;
 
@@ -283,11 +306,7 @@
 
                 var j_arr = JSON.parse(fr.result);
                 _arr = j_arr;
-                // console.log(j_arr);
                 formData = fr;
-                // console.log(formData);
-                // console.log(j_arr);
-                // localStorage.setItem('arr', j_arr);
 
                 var myChart_1 = $('#lineChart_0').epoch({
                     type: 'line',
@@ -400,19 +419,9 @@
 
     function analyze() {
         $('#resultDisplay').modal('show')
-        console.log(JSON.stringify(_arr));
-        console.log(`${public_ip}:8080/predictions`);
-        // fetch('https://jsonplaceholder.typicode.com/todos/1')
-        //     .then(response => response.json())
-        //     .then((data) => {
-        //         console.log(data)
-        //         $('#dataHere').text(data.title);
-        //     });
-
         var myHeaders = new Headers();
-        
+
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-        myHeaders.append("Access-Control-Allow-Credentials", "true");
 
         var urlencoded = new URLSearchParams();
         urlencoded.append("inputFile", JSON.stringify(_arr));
@@ -424,70 +433,77 @@
             redirect: 'follow'
         };
 
-        fetch("https://18.222.224.2:8443/predictions/torch_model", requestOptions)
+        fetch("https://www.diagno.ml:8443/predictions/torch_model", requestOptions)
             .then(response => response.json())
             .then((result) => {
-                console.log(result);
-                // $('#dataHere').text(result[0]);
-                $('#LAD').text(`${(result[0]*100).toFixed(2)}%`);
-                $('#TAb').text(`${(result[1]*100).toFixed(2)}%`);
-                $('#AF').text(`${(result[2]*100).toFixed(2)}%`);
-                $('#STach').text(`${(result[3]*100).toFixed(2)}%`);
-                $('#IAVB').text(`${(result[4]*100).toFixed(2)}%`);
 
-                if(result[0]>0.5){
-                    $('#LADr').addClass("table-danger")
-                }else{
-                    $('#LADr').addClass("table-success")
+                $(".after-results").show();
+                $(".before-results").hide();
+                
+                $('#LAD').text(`${(result[0] * 100).toFixed(2)}%`);
+                $('#TAb').text(`${(result[1] * 100).toFixed(2)}%`);
+                $('#AF').text(`${(result[2] * 100).toFixed(2)}%`);
+                $('#STach').text(`${(result[3] * 100).toFixed(2)}%`);
+                $('#IAVB').text(`${(result[4] * 100).toFixed(2)}%`);
+
+                if (result[0] > 0.5) {
+                    $('#LADr').addClass("table-danger");
+                    $('#LADp').text("HIGH RISK");
+                    $('#LADp').addClass("danger-text");
+                } else {
+                    $('#LADr').addClass("table-success");
+                    $('#LADp').text("LOW RISK");
+                    $('#LADp').addClass("success-text");
                 }
 
-                if(result[1]>0.5){
-                    $('#TAbr').addClass("table-danger")
-                }else{
-                    $('#TAbr').addClass("table-success")
+                if (result[1] > 0.5) {
+                    $('#TAbr').addClass("table-danger");
+                    $('#TAbp').text("HIGH RISK");
+                    $('#TAbp').addClass("danger-text");
+                } else {
+                    $('#TAbr').addClass("table-success");
+                    $('#TAbp').text("LOW RISK");
+                    $('#TAbp').addClass("success-text");
                 }
 
-                if(result[2]>0.5){
-                    $('#AFr').addClass("table-danger")
-                }else{
-                    $('#AFr').addClass("table-success")
+                if (result[2] > 0.5) {
+                    $('#AFr').addClass("table-danger");
+                    $('#AFp').text("HIGH RISK");
+                    $('#AFp').addClass("danger-text");
+                } else {
+                    $('#AFr').addClass("table-success");
+                    $('#AFp').text("LOW RISK");
+                    $('#AFp').addClass("success-text");
                 }
 
-                if(result[3]>0.5){
-                    $('#STachr').addClass("table-danger")
-                }else{
-                    $('#STachr').addClass("table-success")
+                if (result[3] > 0.5) {
+                    $('#STachr').addClass("table-danger");
+                    $('#STachp').text("HIGH RISK");
+                    $('#STachp').addClass("danger-text");
+                } else {
+                    $('#STachr').addClass("table-success");
+                    $('#STachp').text("LOW RISK");
+                    $('#STachp').addClass("success-text");
                 }
 
-                if(result[4]>0.5){
-                    $('#IAVBr').addClass("table-danger")
-                }else{
-                    $('#IAVBr').addClass("table-success")
+                if (result[4] > 0.5) {
+                    $('#IAVBr').addClass("table-danger");
+                    $('#IAVBp').text("HIGH RISK");
+                    $('#IAVBp').addClass("danger-text");
+                } else {
+                    $('#IAVBr').addClass("table-success");
+                    $('#IAVBp').text("LOW RISK");
+                    $('#IAVBp').addClass("success-text");
                 }
             })
-            .catch(error => console.log('error', error));
-
-
+            .catch(error => {
+                // console.log('error', error)
+                $(".error").show();
+                $(".before-results").hide();
+            });
     }
 
 </script>
-
-<!--Render Pages-->
-<script>
-    function renderHome() {
-        $(".screen_PlottingArea").hide();
-        $(".screen_WelcomeScreen").show();
-    }
-
-    function renderRealTimePlotPage() {
-        $(".screen_PlottingArea").show();
-        $(".screen_WelcomeScreen").hide();
-    }
-
-</script>
-
-
-
 
 <!--WebSocket-->
 <script>
@@ -520,103 +536,5 @@
 </script>
 
 
-
-
-
-
-<!--Fullscreen-->
-<script>
-    /* Get the documentElement (<html>) to display the page in fullscreen */
-    var elem = document.documentElement;
-
-    /* View in fullscreen */
-    function openFullscreen() {
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.mozRequestFullScreen) { /* Firefox */
-            elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { /* IE/Edge */
-            elem.msRequestFullscreen();
-        }
-    }
-
-    /* Close fullscreen */
-    function closeFullscreen() {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) { /* Firefox */
-            document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { /* IE/Edge */
-            document.msExitFullscreen();
-        }
-    }
-</script>
-
-
-
-
-
-
-
-<!--Style    -->
-<style>
-    body {
-        background-color: black;
-    }
-
-    #lineChart_0 .line {
-        /*         stroke: cyan             */
-    }
-
-    #lineChart_1 .line {
-        stroke: green
-    }
-
-    #lineChart_2 .line {
-        stroke: crimson
-    }
-
-    #lineChart_3 .line {
-        stroke: DarkOrchid
-    }
-
-
-    #lineChart_4 .line {
-        stroke: blue
-    }
-
-    #lineChart_5 .line {
-        stroke: DarkOrange
-    }
-
-    #lineChart_6 .line {
-        stroke: ForestGreen
-    }
-
-    #lineChart_7 .line {
-        stroke: Chocolate
-    }
-
-
-    #lineChart_8 .line {
-        stroke: DarkKhaki
-    }
-
-    #lineChart_9 .line {
-        stroke: DarkSalmon
-    }
-
-    #lineChart_10 .line {
-        stroke: DarkViolet
-    }
-
-    #lineChart_11 .line {
-        stroke: Fuchsia
-    }
-</style>
 
 </html>
